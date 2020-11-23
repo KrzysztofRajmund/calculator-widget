@@ -103,6 +103,11 @@ border:none;
         &:hover{
             color: $hoverTextColor;
         }
+
+        &:active{
+            color: green;
+            font-size:24px;
+        }
     }
 
     .table__numeric-button{
@@ -117,6 +122,11 @@ border:none;
         &:hover{
 
             color: $hoverTextColor;
+        }
+
+        &:active{
+            color: green;
+            font-size:24px;
         }
         
     }

@@ -113,6 +113,11 @@ body {
   color: #e62f89;
 }
 
+.table__col .table__funcional-button:active {
+  color: green;
+  font-size: 24px;
+}
+
 .table__col .table__numeric-button {
   background-image: -webkit-gradient(linear, left top, right bottom, from(#fff), to(#f4f4f4));
   background-image: linear-gradient(to bottom right, #fff, #f4f4f4);
@@ -126,6 +131,11 @@ body {
 
 .table__col .table__numeric-button:hover {
   color: #e62f89;
+}
+
+.table__col .table__numeric-button:active {
+  color: green;
+  font-size: 24px;
 }
 
 .table__funcional-button, .table__numeric-button {

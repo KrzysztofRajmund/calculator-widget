@@ -7,7 +7,7 @@ const CalculatorComponent = () => {
   const [result, setResult] = useState(0);
 
   //button -/+ 
-  const toggleNumber = (e) => {
+  const toggleNumber = () => {
     let minus = "-";
     let newConcat = concat.concat(minus);
     setConcat(newConcat);
