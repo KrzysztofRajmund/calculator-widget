@@ -6,28 +6,14 @@ const CalculatorComponent = () => {
   const [concat, setConcat] = useState("0");
   const [result, setResult] = useState(0);
 
-  //toggle -/+ button
-  const toggleNumber = () => {
-    console.log(concat,"concat");
-    
-    let xMinus = concat.slice(-2, -1);
-    let yMinus = concat.slice(-3, -2);
+  //button -/+ 
+  const toggleNumber = (e) => {
+    let minus = "-";
+    let newConcat = concat.concat(minus);
+    setConcat(newConcat);
 
-    if (
-      (xMinus === "-" && yMinus === "-") ||
-      (xMinus === "-" && yMinus === " ")
-    ) {
-      let lastNumber = concat.slice(-1);
-      let subtractMinus = concat.slice(0, -3);
-      let toggle = subtractMinus + lastNumber;
-      setConcat(toggle);
-      setResult(eval(concat));
-    } else {
-      let lastNumber = concat.slice(-1);
-      let toggle = " " + "-" + lastNumber;
-      let newConcat = concat.slice(0, -1) + toggle;
-      setConcat(newConcat);
-      setResult(eval(concat));
+    if (newConcat.includes("--")) {
+      setConcat(newConcat.replace("--", "+"));
     }
   };
 
