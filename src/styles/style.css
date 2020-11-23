@@ -1,0 +1,135 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap");
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  font-family: "Lato", sans-serif;
+  background-image: -webkit-gradient(linear, left top, right bottom, from(#9156e1), to(#ff9768));
+  background-image: linear-gradient(to bottom right, #9156e1, #ff9768);
+  background-repeat: no-repeat;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 100vh;
+}
+
+.table__row:first-of-type {
+  background-color: #212121;
+}
+
+.table__col:first-of-type {
+  border-radius: 5px 5px 0px 0px;
+  position: relative;
+}
+
+.table__result {
+  padding: 15px 30px 15px 2px;
+  background: transparent;
+  color: #fff;
+  font-size: 40px;
+  text-align: right;
+  width: 100%;
+}
+
+.table__concat {
+  position: absolute;
+  bottom: 55%;
+  right: 0px;
+  padding: 25px 30px 0px 2px;
+  background: transparent;
+  color: #d98192;
+  font-size: 24px;
+  text-align: right;
+  width: 100%;
+}
+
+.table__concat, .table__result, .table__numeric-button, .table__funcional-button {
+  border: none;
+}
+
+.table__concat:focus, .table__result:focus, .table__numeric-button:focus, .table__funcional-button:focus {
+  outline: none;
+}
+
+.table .table__col {
+  padding: 0;
+}
+
+.table__col {
+  width: 70px;
+  height: 70px;
+  text-align: center;
+}
+
+.table__col .table__funcional-button {
+  background-image: -webkit-gradient(linear, left top, right top, from(#f7f7f7), to(#f1f1f1));
+  background-image: linear-gradient(to right, #f7f7f7, #f1f1f1);
+  color: #212121;
+  -webkit-transition: color 0.3s;
+  transition: color 0.3s;
+}
+
+.table__col .table__funcional-button[value="/"] {
+  background: #9156e1;
+  color: #fff;
+}
+
+.table__col .table__funcional-button[value="x"] {
+  background: #8d52dd;
+  color: #fff;
+}
+
+.table__col .table__funcional-button[value="-"] {
+  background: #894ed9;
+  color: #fff;
+}
+
+.table__col .table__funcional-button[value="+"] {
+  background: #8547d9;
+  color: #fff;
+}
+
+.table__col .table__funcional-button[value="="] {
+  background: #e62f89;
+  color: #fff;
+  border-radius: 0px 0px 5px 0px;
+  -webkit-transition: background-color 0.3s;
+  transition: background-color 0.3s;
+}
+
+.table__col .table__funcional-button[value="="]:hover {
+  background-color: #212121;
+}
+
+.table__col .table__funcional-button:hover {
+  color: #e62f89;
+}
+
+.table__col .table__numeric-button {
+  background-image: -webkit-gradient(linear, left top, right bottom, from(#fff), to(#f4f4f4));
+  background-image: linear-gradient(to bottom right, #fff, #f4f4f4);
+  -webkit-transition: color 0.3s;
+  transition: color 0.3s;
+}
+
+.table__col .table__numeric-button[value="0"] {
+  border-radius: 0px 0px 0px 5px;
+}
+
+.table__col .table__numeric-button:hover {
+  color: #e62f89;
+}
+
+.table__funcional-button, .table__numeric-button {
+  width: 100%;
+  height: 100%;
+}
+/*# sourceMappingURL=style.css.map */
