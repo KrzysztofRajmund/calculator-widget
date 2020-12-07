@@ -1,21 +1,34 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Container, Table } from "react-bootstrap";
 
 const CalculatorComponent = () => {
   //global variables
   const resultInput = document.getElementById("result");
+  const toggleButton = document.getElementById("toggle-button");
   //hooks
   const [concat, setConcat] = useState("0");
   const [result, setResult] = useState(0);
+  const [loading, setLoading] = useState(false);
+  const [buttonLoaded, setButtonLoaded] = useState(true)
+
+  useEffect(()=>{
+    setLoading(true)
+  },[result])
 
   //button -/+
-  const toggleNumber = () => {
-    let minus = "-";
+  const toggleNumber = (e) => {
+    let minus="-";
     let newConcat = concat.concat(minus);
-    setConcat(newConcat);
+    setButtonLoaded(false);
 
-    if (newConcat.includes("--")) {
+    if (buttonLoaded === true){
+      setConcat(newConcat);
+      toggleButton.disabled = true;
+
+    }
+    if (newConcat.includes("--") && buttonLoaded === true) {
       setConcat(newConcat.replace("--", "+"));
+      toggleButton.disabled = true;
     }
   };
 
@@ -70,13 +83,15 @@ const CalculatorComponent = () => {
       setConcat(nr);
     } else {
       setConcat(concat + nr);
+      setButtonLoaded(true);
+      toggleButton.disabled = false;
     }
   };
 
   //result length
-  if (result.toString().length > 10) {
+  if (result.toString().length > 10 && loading === true) {
     resultInput.classList.add("table__result_size");
-  } else {
+  } if (loading === true && result.toString().length < 10){
     resultInput.classList.remove("table__result_size");
   }
 
@@ -94,8 +109,8 @@ const CalculatorComponent = () => {
               />
               <br />
               <input
-                id="result"
                 className="table__result"
+                id="result"
                 type="text"
                 value={result}
                 id="result"
@@ -113,8 +128,9 @@ const CalculatorComponent = () => {
             </td>
             <td className="table__col">
               <input
+                id="toggle-button"
                 type="button"
-                value="+/-"
+                value="-/+"
                 onClick={toggleNumber}
                 className="table__funcional-button"
               />

@@ -19,6 +19,7 @@ body {
 //result & concat input
 .table__row:first-of-type{
     background-color: #212121;
+    height:120px;
 }
 
 .table__col:first-of-type{
@@ -37,6 +38,7 @@ body {
 
 .table__result_size{
     font-size: 20px;
+    padding-top: 25px;
 }
 
 .table__concat{
