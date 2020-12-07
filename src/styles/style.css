@@ -39,6 +39,10 @@ body {
   width: 100%;
 }
 
+.table__result_size {
+  font-size: 20px;
+}
+
 .table__concat {
   position: absolute;
   bottom: 55%;
