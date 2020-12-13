@@ -7,6 +7,7 @@ const CalculatorComponent = () => {
   const toggleButton = document.getElementById("toggle-button");
   //hooks
   const [concat, setConcat] = useState("0");
+  const [display, setDisplay] = useState("0")
   const [result, setResult] = useState(0);
   const [loading, setLoading] = useState(false);
   const [buttonLoaded, setButtonLoaded] = useState(true)
@@ -23,11 +24,13 @@ const CalculatorComponent = () => {
 
     if (buttonLoaded === true){
       setConcat(newConcat);
+      setDisplay(newConcat)
       toggleButton.disabled = true;
 
     }
     if (newConcat.includes("--") && buttonLoaded === true) {
       setConcat(newConcat.replace("--", "+"));
+      setDisplay(newConcat.replace("--", "+"));
       toggleButton.disabled = true;
     }
   };
@@ -35,18 +38,10 @@ const CalculatorComponent = () => {
   //FUNCTIONAL BUTTON
   const pressedFunctionalBtn = (e) => {
     let btnValue = e.target.value;
-    // x = *
-    if (btnValue === "x") {
-      btnValue = "*";
-    }
-
-    if (btnValue === "%") {
-      btnValue = "/100";
-    }
 
     // filter inputs value for specific behavior
-    let array = ["/", "+", "-", "*"];
-    let lastFunc = concat.charAt(concat.length - 1);
+    let array = ["/", "+", "-", "x"];
+    let lastFunc = display.charAt(display.length - 1);
     let filter = array.filter((x) => x === lastFunc);
 
     if (filter.toString() === lastFunc && btnValue !== "C") {
@@ -55,21 +50,33 @@ const CalculatorComponent = () => {
       switch (btnValue) {
         case "=":
           setResult(eval(concat));
-          setConcat("0");
+          setConcat(eval(concat).toString());
+          setDisplay(eval(concat).toString());
           break;
 
         case "C":
           setResult(0);
           setConcat("0");
+          setDisplay("0");
           break;
 
-        case "%":
-          setConcat(concat + btnValue);
+        case "x":
+          setConcat(concat + "*");
+          setDisplay(display + "x");
           setResult(eval(concat));
           break;
 
+          case "%":
+            setConcat(concat + "/100");
+            setDisplay(display + "%");
+            setResult(eval(concat));
+            console.log(concat, "concat");
+            console.log(display, "display");
+            break;
+
         default:
           setConcat(concat + btnValue);
+          setDisplay(display + btnValue);
           setResult(eval(concat));
       }
     }
@@ -79,10 +86,12 @@ const CalculatorComponent = () => {
   const pressedNumberBtn = (e) => {
     let nr = e.target.value;
 
-    if (concat == "0") {
+    if (concat == "0" && display == "0") {
       setConcat(nr);
+      setDisplay(nr)
     } else {
       setConcat(concat + nr);
+      setDisplay(display + nr)
       setButtonLoaded(true);
       toggleButton.disabled = false;
     }
@@ -104,7 +113,7 @@ const CalculatorComponent = () => {
               <input
                 className="table__concat"
                 type="text"
-                value={concat}
+                value={display}
                 id="concat"
               />
               <br />
